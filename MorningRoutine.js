@@ -13,7 +13,7 @@ class Student {
 
   eat() {
     console.log('eating...');
-    this.minutesLeft -= 30;
+    this.minutesLeft = this.minutesLeft- 30;
     this.digest();
   }
 
@@ -37,11 +37,10 @@ morningRoutine();
 
 function morningRoutine() {
   const student = new Student();
-
   student.wakeUp();
   student.showerAndBrushTeeth();
   const actionToTake = student.minutesLeft >= 30 ? student.eat : student.catchBus;
 
-  actionToTake();
+  actionToTake.call(student);
 
 }
